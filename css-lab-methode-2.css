@@ -1,0 +1,3488 @@
+/* ============================================================================
+   WPF-AI-LAB · Méthode 02 — Gutenberg natif + CSS personnalisé page-level
+   Direction B « Lab » · brutalist technique, bone + ink + acid + violet
+   Scope strict : body.page-id-129 — n'affecte aucune autre page du site.
+   ============================================================================ */
+
+/* Google Fonts — DEUX @import séparés (piège 10 : `&family=` strippé par Astra/Spectra) */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* ---------- Tokens ---------- */
+body.page-id-129 {
+  --b-bg: #EDECE7;
+  --b-paper: #FFFFFF;
+  --b-ink: #0A0A0A;
+  --b-ink-2: #2A2A2A;
+  --b-ink-3: #6E6E6E;
+  --b-acid: #D7FF3A;
+  --b-violet: #6F4BFF;
+  --b-rule: #0A0A0A;
+  --b-rule-soft: rgba(10, 10, 10, .12);
+}
+
+/* ---------- Base reset scoped ---------- */
+body.page-id-129 {
+  background: var(--b-bg) !important;
+  color: var(--b-ink) !important;
+  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif !important;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-variant-emoji: text;
+}
+
+body.page-id-129 .entry-content,
+body.page-id-129 .sec-utility,
+body.page-id-129 .sec-localnav,
+body.page-id-129 .sec-hero,
+body.page-id-129 .sec-stats,
+body.page-id-129 .sec-why,
+body.page-id-129 .sec-pillars,
+body.page-id-129 .sec-methods,
+body.page-id-129 .sec-team,
+body.page-id-129 .sec-cta,
+body.page-id-129 .sec-footer { font-variant-emoji: text; }
+
+body.page-id-129 .entry-content,
+body.page-id-129 .ast-container,
+body.page-id-129 .site-content > .ast-container,
+body.page-id-129 .site-content {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.page-id-129 .entry-content > * {
+  max-width: 100% !important;
+}
+
+body.page-id-129 .wp-block-group { margin: 0; }
+
+/* Neutralize Gutenberg layout-constrained max-width on section inner content (full-bleed) */
+body.page-id-129 .wp-block-group.sec-utility,
+body.page-id-129 .wp-block-group.sec-localnav,
+body.page-id-129 .wp-block-group.sec-hero,
+body.page-id-129 .wp-block-group.sec-stats,
+body.page-id-129 .wp-block-group.sec-why,
+body.page-id-129 .wp-block-group.sec-pillars,
+body.page-id-129 .wp-block-group.sec-methods,
+body.page-id-129 .wp-block-group.sec-team,
+body.page-id-129 .wp-block-group.sec-cta,
+body.page-id-129 .wp-block-group.sec-footer {
+  max-width: none !important;
+  width: 100% !important;
+}
+body.page-id-129 .wp-block-group.sec-utility > *,
+body.page-id-129 .wp-block-group.sec-localnav > *,
+body.page-id-129 .wp-block-group.sec-hero > *,
+body.page-id-129 .wp-block-group.sec-stats > *,
+body.page-id-129 .wp-block-group.sec-why > *,
+body.page-id-129 .wp-block-group.sec-pillars > *,
+body.page-id-129 .wp-block-group.sec-methods > *,
+body.page-id-129 .wp-block-group.sec-team > *,
+body.page-id-129 .wp-block-group.sec-cta > *,
+body.page-id-129 .wp-block-group.sec-footer > * {
+  max-width: none !important;
+  width: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+body.page-id-129 .wp-block-group.is-layout-constrained > * {
+  max-width: none !important;
+}
+body.page-id-129 .wp-block-heading {
+  max-width: none !important;
+}
+
+/* Force arrow characters (↗ ↘ ↳ →) to render as text glyphs, not color emoji */
+body.page-id-129 .arrow-noemoji,
+body.page-id-129 .sec-cta .cta-title,
+body.page-id-129 .sec-hero .hero-title,
+body.page-id-129 .sec-why .why-title,
+body.page-id-129 .sec-methods .methods-title,
+body.page-id-129 .sec-team .team-title {
+  font-variant-emoji: text;
+  -webkit-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga" 1;
+}
+body.page-id-129 .arrow-noemoji {
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  color: inherit;
+  font-variant-emoji: text;
+}
+
+/* ---------- Banner méthode (commune aux 5 pages, sans scope page-id) ---------- */
+/* S4-ter : fond ink/texte clair par défaut (très saillant) ; is-featured = acid */
+.sec-method-banner {
+  background: #0A0A0A !important;
+  border-bottom: 1px solid #0A0A0A;
+  border-top: 1px solid #0A0A0A;
+  padding: 18px 32px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #EDECE7;
+  flex-wrap: wrap;
+}
+.sec-method-banner.is-featured {
+  background: #D7FF3A !important;
+  color: #0A0A0A;
+}
+.sec-method-banner .banner-prefix {
+  color: rgba(237, 236, 231, .55);
+}
+.sec-method-banner.is-featured .banner-prefix {
+  color: #6E6E6E;
+}
+.sec-method-banner .banner-num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 5px 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.sec-method-banner.is-featured .banner-num {
+  background: #0A0A0A;
+  color: #D7FF3A;
+}
+.sec-method-banner .banner-sep {
+  color: rgba(237, 236, 231, .4);
+  margin: 0 2px;
+}
+.sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: #EDECE7;
+}
+.sec-method-banner.is-featured .banner-name {
+  color: #0A0A0A;
+}
+.sec-method-banner .banner-tag {
+  margin-left: auto;
+  background: #6F4BFF;
+  color: #FFFFFF;
+  padding: 5px 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.sec-method-banner.is-featured .banner-tag {
+  background: #0A0A0A;
+  color: #D7FF3A;
+}
+@media (max-width: 640px) {
+  .sec-method-banner {
+    padding: 12px 16px !important;
+    font-size: 10px;
+    gap: 10px;
+  }
+  .sec-method-banner .banner-name {
+    font-size: 13px;
+    width: 100%;
+  }
+  .sec-method-banner .banner-tag {
+    margin-left: 0;
+  }
+}
+
+body.page-id-129 a { color: inherit; text-decoration: none; }
+
+body.page-id-129 h1,
+body.page-id-129 h2,
+body.page-id-129 h3 {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em;
+}
+
+body.page-id-129 p { margin: 0; }
+
+/* ---------- Helpers typo ---------- */
+body.page-id-129 .mono,
+body.page-id-129 .mono-sm,
+body.page-id-129 .mono-xs {
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  font-weight: 500;
+}
+body.page-id-129 .mono-sm {
+  font-size: 10.5px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+body.page-id-129 .mono-xs {
+  font-size: 9.5px;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+body.page-id-129 .hl-acid {
+  background: var(--b-acid);
+  padding: 0 .12em;
+  margin: 0 -.06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+body.page-id-129 .op-violet { color: var(--b-violet); }
+body.page-id-129 .txt-violet { color: var(--b-violet); }
+body.page-id-129 .txt-acid { color: var(--b-acid); }
+body.page-id-129 .txt-bg { color: var(--b-bg); }
+body.page-id-129 .txt-ink-2 { color: var(--b-ink-2); }
+body.page-id-129 .txt-ink-3 { color: var(--b-ink-3); }
+
+/* ---------- Section 01 — top utility ---------- */
+body.page-id-129 .sec-utility {
+  background: var(--b-bg) !important;
+  padding: 14px 32px 18px !important;
+  border-bottom: 1px solid var(--b-ink);
+}
+body.page-id-129 .sec-utility .utility-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+body.page-id-129 .sec-utility .utility-row > div {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+body.page-id-129 .sec-utility .badge-wpf-lab {
+  background: var(--b-ink);
+  color: var(--b-acid);
+  padding: 2px 6px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+/* ---------- Section 02 — local nav ---------- */
+body.page-id-129 .sec-localnav {
+  background: var(--b-bg) !important;
+  padding: 18px 32px 22px !important;
+  border-bottom: 1px dashed rgba(10, 10, 10, .4);
+}
+body.page-id-129 .sec-localnav .localnav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+body.page-id-129 .sec-localnav .brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--b-ink);
+}
+body.page-id-129 .sec-localnav .brand .sep,
+body.page-id-129 .sec-localnav .brand .lab {
+  color: var(--b-violet);
+}
+body.page-id-129 .sec-localnav .nav-links {
+  display: flex;
+  gap: 24px;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-localnav .nav-cta {
+  padding: 6px 10px;
+  background: var(--b-acid);
+  color: var(--b-ink);
+  border: 1px solid var(--b-ink);
+}
+
+/* ---------- Section 03 — hero ---------- */
+body.page-id-129 .sec-hero {
+  background: var(--b-bg) !important;
+  padding: 28px 32px 96px !important;
+  position: relative;
+}
+body.page-id-129 .sec-hero .hero-grid {
+  display: grid;
+  grid-template-columns: 60px 1fr 320px;
+  gap: 0;
+}
+body.page-id-129 .sec-hero .line-numbers {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: var(--b-ink-3);
+  line-height: 1.4;
+  padding-top: 8px;
+  text-transform: uppercase;
+}
+body.page-id-129 .sec-hero .line-numbers > div { height: 22px; }
+
+body.page-id-129 .sec-hero .hero-main {
+  position: relative;
+  padding: 0 24px 0 8px;
+}
+body.page-id-129 .sec-hero .hero-main::before,
+body.page-id-129 .sec-hero .hero-main::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background:
+    linear-gradient(var(--b-ink), var(--b-ink)) center / 1px 10px no-repeat,
+    linear-gradient(var(--b-ink), var(--b-ink)) center / 10px 1px no-repeat;
+  pointer-events: none;
+}
+body.page-id-129 .sec-hero .hero-main::before { left: -4px; }
+body.page-id-129 .sec-hero .hero-main::after { right: -4px; }
+
+body.page-id-129 .sec-hero .hero-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin-bottom: 18px;
+  display: block;
+}
+body.page-id-129 .sec-hero .hero-eyebrow .eb-tag {
+  background: var(--b-violet);
+  color: var(--b-bg);
+  padding: 3px 8px;
+  margin-right: 10px;
+}
+body.page-id-129 .sec-hero .hero-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 104px !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--b-ink) !important;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-hero .hero-lead {
+  margin-top: 28px !important;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  max-width: 620px;
+}
+body.page-id-129 .sec-hero .hero-lead strong { color: var(--b-ink); font-weight: 700; }
+
+body.page-id-129 .sec-hero .annot {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-hero .annot.first { margin-top: 36px; }
+body.page-id-129 .sec-hero .annot .arrow { color: var(--b-violet); }
+body.page-id-129 .sec-hero .annot .tag {
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 3px 8px;
+}
+body.page-id-129 .sec-hero .annot .tag.acid {
+  background: var(--b-acid);
+  color: var(--b-ink);
+  border: 1px solid var(--b-ink);
+}
+
+body.page-id-129 .sec-hero .roadmap-label {
+  margin-top: 36px;
+  margin-bottom: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .sec-hero .roadmap {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+body.page-id-129 .sec-hero .roadmap-card {
+  padding: 12px 12px 14px;
+  border: 1.5px solid var(--b-ink);
+  background: var(--b-paper);
+  position: relative;
+}
+body.page-id-129 .sec-hero .roadmap-card.featured { background: var(--b-acid); }
+body.page-id-129 .sec-hero .roadmap-card .rc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-hero .roadmap-card .rc-star { color: var(--b-ink); font-weight: 700; }
+body.page-id-129 .sec-hero .roadmap-card .rc-name {
+  margin-top: 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  color: var(--b-ink);
+  letter-spacing: -0.01em;
+}
+body.page-id-129 .sec-hero .roadmap-card .rc-score {
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+body.page-id-129 .sec-hero .roadmap-card .rc-score .num {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--b-ink);
+  line-height: 1;
+}
+body.page-id-129 .sec-hero .roadmap-card .rc-score .max {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+
+body.page-id-129 .sec-hero .hero-ctas {
+  margin-top: 32px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+body.page-id-129 .btn {
+  background: var(--b-ink);
+  color: var(--b-acid);
+  border: 2px solid var(--b-ink);
+  padding: 14px 22px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+body.page-id-129 .btn--ghost {
+  background: var(--b-bg);
+  color: var(--b-ink);
+}
+body.page-id-129 .btn--acid {
+  background: var(--b-acid);
+  color: var(--b-ink);
+}
+body.page-id-129 .btn:hover { background: var(--b-violet); color: var(--b-acid); }
+
+body.page-id-129 .sec-hero .hero-rail {
+  border-left: 1px solid var(--b-ink);
+  padding-left: 24px;
+}
+body.page-id-129 .sec-hero .rail-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink);
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-hero .meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-hero .meta-list .row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+body.page-id-129 .sec-hero .meta-list .row .k { color: var(--b-ink-3); }
+body.page-id-129 .sec-hero .rail-sep {
+  height: 1px;
+  background: var(--b-ink);
+  margin: 28px 0;
+}
+body.page-id-129 .sec-hero .verdict-strip {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+body.page-id-129 .sec-hero .verdict-strip .vs-cell {
+  flex: 1;
+  height: 28px;
+  background: var(--b-bg);
+  border: 1px solid var(--b-ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--b-ink);
+}
+body.page-id-129 .sec-hero .verdict-strip .vs-cell.win {
+  background: var(--b-acid);
+}
+body.page-id-129 .sec-hero .verdict-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-hero .rail-cta {
+  margin-top: 22px;
+  width: 100%;
+  background: var(--b-ink);
+  color: var(--b-acid);
+  border: 1px solid var(--b-ink);
+  padding: 14px 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+body.page-id-129 .sec-hero .rail-cta--acid {
+  margin-top: 6px;
+  background: var(--b-acid);
+  color: var(--b-ink);
+}
+
+/* ---------- Section 04 — stats ---------- */
+body.page-id-129 .sec-stats {
+  background: var(--b-ink) !important;
+  color: var(--b-bg) !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--b-ink);
+}
+body.page-id-129 .sec-stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+body.page-id-129 .sec-stats .stat-cell {
+  padding: 40px 36px;
+  border-right: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  background: transparent;
+}
+body.page-id-129 .sec-stats .stat-cell:last-child { border-right: 0; }
+body.page-id-129 .sec-stats .stat-cell.violet {
+  background: var(--b-violet);
+}
+body.page-id-129 .sec-stats .stat-kpi {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+}
+body.page-id-129 .sec-stats .stat-cell.violet .stat-kpi { color: var(--b-bg); }
+body.page-id-129 .sec-stats .stat-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--b-bg);
+}
+body.page-id-129 .sec-stats .stat-cell.violet .stat-value { color: var(--b-acid); }
+body.page-id-129 .sec-stats .stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .7);
+}
+body.page-id-129 .sec-stats .stat-cell.violet .stat-label { color: var(--b-bg); }
+
+/* ---------- Section 05 — why ---------- */
+body.page-id-129 .sec-why {
+  background: var(--b-bg) !important;
+  padding: 112px 32px !important;
+}
+body.page-id-129 .sec-why .why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+body.page-id-129 .sec-why .why-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin-bottom: 18px;
+}
+body.page-id-129 .sec-why .why-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 60px !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--b-ink) !important;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-why .why-body {
+  margin-top: 32px !important;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--b-ink-2);
+  max-width: 520px;
+}
+body.page-id-129 .sec-why .pull {
+  margin-top: 36px;
+  padding: 26px 22px 20px;
+  background: var(--b-ink);
+  color: var(--b-bg);
+  position: relative;
+}
+body.page-id-129 .sec-why .pull-tag {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--b-acid);
+  color: var(--b-ink);
+  padding: 3px 8px;
+  border: 1px solid var(--b-ink);
+}
+body.page-id-129 .sec-why .pull-quote {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.25;
+  padding-top: 6px;
+}
+body.page-id-129 .sec-why .pull-author {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  margin-top: 14px;
+}
+
+body.page-id-129 .sec-why .fig-wrap { position: relative; padding-top: 8px; }
+body.page-id-129 .sec-why .fig-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-why .fig-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-why .fig-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .sec-why .fig-capture {
+  position: relative;
+  padding-top: 20px;
+  padding-left: 28px;
+}
+body.page-id-129 .sec-why .ruler-top {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 0;
+  height: 14px;
+  border-bottom: 1px solid var(--b-ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .sec-why .ruler-top span {
+  border-left: 1px solid var(--b-ink);
+  padding-left: 4px;
+  height: 8px;
+  line-height: 1;
+}
+body.page-id-129 .sec-why .ruler-left {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 0;
+  width: 22px;
+  border-right: 1px solid var(--b-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 4px 0 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .sec-why .ruler-left span {
+  border-top: 1px solid var(--b-ink);
+  padding-top: 4px;
+  width: 18px;
+  text-align: right;
+  line-height: 1;
+}
+body.page-id-129 .sec-why .capture-frame {
+  position: relative;
+  border: 2px solid var(--b-violet);
+  box-shadow: 8px 8px 0 var(--b-acid);
+  background: var(--b-paper);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(135deg, rgba(111, 75, 255, .15) 0 1px, transparent 1px 11px);
+}
+body.page-id-129 .sec-why .capture-frame .frame-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+}
+body.page-id-129 .sec-why .frame-overlay {
+  position: absolute;
+  top: 26%;
+  left: 8%;
+  width: 44%;
+  height: 30%;
+  border: 1.5px dashed var(--b-violet);
+  pointer-events: none;
+}
+body.page-id-129 .sec-why .frame-overlay-label {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--b-violet);
+  color: var(--b-bg);
+  padding: 2px 6px;
+}
+body.page-id-129 .sec-why .score-box {
+  margin-top: 18px;
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 16px 18px;
+}
+body.page-id-129 .sec-why .score-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+body.page-id-129 .sec-why .score-head .label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-acid);
+}
+body.page-id-129 .sec-why .score-head .total {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--b-acid);
+}
+body.page-id-129 .sec-why .score-head .total .max {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  margin-left: 4px;
+}
+body.page-id-129 .sec-why .score-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 32px;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .7);
+}
+body.page-id-129 .sec-why .score-bar {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, .12);
+}
+body.page-id-129 .sec-why .score-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--b-acid);
+  width: 100%;
+}
+body.page-id-129 .sec-why .score-row .val { color: var(--b-acid); text-align: right; }
+
+body.page-id-129 .sec-why .footnote {
+  margin-top: 72px;
+  padding: 20px 24px;
+  border: 1px dashed var(--b-ink);
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+body.page-id-129 .sec-why .footnote .note-key { color: var(--b-violet); }
+
+/* ---------- Section 06 — pillars ---------- */
+body.page-id-129 .sec-pillars {
+  background: var(--b-paper) !important;
+  padding: 104px 32px !important;
+  border-top: 1px solid var(--b-ink);
+  border-bottom: 1px solid var(--b-ink);
+}
+body.page-id-129 .sec-pillars .pillars-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 56px;
+  margin-bottom: 48px;
+}
+body.page-id-129 .sec-pillars .pillars-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-pillars .pillars-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 64px !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--b-ink) !important;
+  text-transform: lowercase;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-pillars .pillars-lead {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  align-self: end;
+  margin: 0;
+}
+body.page-id-129 .sec-pillars .pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 2px solid var(--b-ink);
+  border-left: 2px solid var(--b-ink);
+}
+body.page-id-129 .sec-pillars .pillar {
+  padding: 28px 22px 32px;
+  border-right: 2px solid var(--b-ink);
+  border-bottom: 2px solid var(--b-ink);
+  background: var(--b-paper);
+  color: var(--b-ink);
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body.page-id-129 .sec-pillars .pillar.acid { background: var(--b-acid); }
+body.page-id-129 .sec-pillars .pillar.violet { background: var(--b-violet); color: var(--b-bg); }
+body.page-id-129 .sec-pillars .pillar-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-pillars .pillar.violet .pillar-head { color: rgba(255, 255, 255, .6); }
+body.page-id-129 .sec-pillars .pillar-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: lowercase;
+  margin: 32px 0 12px !important;
+}
+body.page-id-129 .sec-pillars .pillar-body {
+  font-size: 13.5px;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin: 0;
+}
+body.page-id-129 .sec-pillars .pillar.violet .pillar-body { opacity: 0.9; }
+body.page-id-129 .sec-pillars .pillar-weight {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-top: 18px;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-pillars .pillar.violet .pillar-weight { color: rgba(255, 255, 255, .7); }
+
+/* ---------- Section 07 — methods ---------- */
+body.page-id-129 .sec-methods {
+  background: var(--b-bg) !important;
+  padding: 112px 32px 130px !important;
+}
+body.page-id-129 .sec-methods .methods-head { margin-bottom: 56px; }
+body.page-id-129 .sec-methods .methods-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin-bottom: 18px;
+}
+body.page-id-129 .sec-methods .methods-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 96px !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--b-ink) !important;
+  text-transform: lowercase;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-methods .methods-title .scorees { color: var(--b-violet); }
+
+body.page-id-129 .method-table {
+  border: 2px solid var(--b-ink);
+  background: var(--b-paper);
+}
+body.page-id-129 .method-table .head-row {
+  display: grid;
+  grid-template-columns: 60px 1.6fr repeat(4, 1fr) 1fr;
+  border-bottom: 2px solid var(--b-ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .method-table .head-row > div {
+  padding: 14px 12px;
+  border-right: 1px solid rgba(10, 10, 10, .1);
+}
+body.page-id-129 .method-table .head-row > div:last-child { border-right: 0; }
+
+body.page-id-129 .method-row {
+  display: grid;
+  grid-template-columns: 60px 1.6fr repeat(4, 1fr) 1fr;
+  border-bottom: 1px solid rgba(10, 10, 10, .15);
+  align-items: stretch;
+}
+body.page-id-129 .method-row:last-child { border-bottom: 0; }
+body.page-id-129 .method-row.featured { background: var(--b-acid); }
+body.page-id-129 .method-row .mr-n {
+  padding: 20px 12px;
+  border-right: 1px solid rgba(10, 10, 10, .1);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+  display: flex;
+  align-items: center;
+}
+body.page-id-129 .method-row .mr-meta {
+  padding: 20px 14px;
+  border-right: 1px solid rgba(10, 10, 10, .1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+body.page-id-129 .method-row .mr-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+body.page-id-129 .method-row .mr-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--b-ink);
+  text-transform: lowercase;
+}
+body.page-id-129 .method-row .mr-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--b-ink);
+  color: var(--b-acid);
+  padding: 2px 6px;
+}
+body.page-id-129 .method-row .mr-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .method-row .mr-blurb {
+  font-size: 12.5px;
+  color: var(--b-ink-2);
+  margin-top: 6px;
+}
+body.page-id-129 .method-row .mr-verdict {
+  margin-top: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .method-row.featured .mr-verdict { color: var(--b-ink); }
+body.page-id-129 .method-row .mr-score {
+  padding: 20px 14px;
+  border-right: 1px solid rgba(10, 10, 10, .1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+body.page-id-129 .method-row .mr-score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+body.page-id-129 .method-row .mr-score-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--b-ink);
+}
+body.page-id-129 .method-row .mr-score-max {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .method-row .mr-bar {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  background: rgba(10, 10, 10, .08);
+}
+body.page-id-129 .method-row .mr-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--b-violet);
+}
+body.page-id-129 .method-row.featured .mr-bar { background: rgba(10, 10, 10, .15); }
+body.page-id-129 .method-row.featured .mr-bar-fill { background: var(--b-ink); }
+body.page-id-129 .method-row .mr-total {
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  color: var(--b-ink);
+}
+body.page-id-129 .method-row.featured .mr-total {
+  background: var(--b-ink);
+  color: var(--b-acid);
+}
+body.page-id-129 .method-row .mr-total-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+}
+body.page-id-129 .method-row .mr-total-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin-top: 6px;
+}
+body.page-id-129 .method-row.featured .mr-total-label { color: rgba(255, 255, 255, .6); }
+body.page-id-129 .method-row .mr-cta {
+  margin-top: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  background: var(--b-ink);
+  color: var(--b-acid);
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+body.page-id-129 .method-row.featured .mr-cta {
+  background: var(--b-acid);
+  color: var(--b-ink);
+}
+
+body.page-id-129 .sec-methods .table-footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Section 08 — team ---------- */
+body.page-id-129 .sec-team {
+  background: var(--b-paper) !important;
+  padding: 104px 32px !important;
+  border-top: 2px solid var(--b-ink);
+  border-bottom: 2px solid var(--b-ink);
+}
+body.page-id-129 .sec-team .team-head { margin-bottom: 48px; }
+body.page-id-129 .sec-team .team-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-team .team-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 64px !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--b-ink) !important;
+  text-transform: lowercase;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-team .team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 2px solid var(--b-ink);
+}
+body.page-id-129 .sec-team .team-card {
+  padding: 32px 28px 36px;
+  border-right: 2px solid var(--b-ink);
+  background: var(--b-paper);
+  color: var(--b-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+body.page-id-129 .sec-team .team-card:last-child { border-right: 0; }
+body.page-id-129 .sec-team .team-card.is-claude {
+  background: var(--b-ink);
+  color: var(--b-bg);
+}
+body.page-id-129 .sec-team .team-head-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-head-row { color: rgba(255, 255, 255, .5); }
+body.page-id-129 .sec-team .team-card .badge-hum { color: var(--b-violet); }
+body.page-id-129 .sec-team .team-card.is-claude .badge-hum { color: var(--b-acid); }
+body.page-id-129 .sec-team .team-id {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+body.page-id-129 .sec-team .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+body.page-id-129 .sec-team .avatar.hue-12 {
+  background: radial-gradient(circle at 30% 30%, #f0a596 0%, #c75a3f 55%, #7a3525 100%);
+}
+body.page-id-129 .sec-team .avatar.hue-320 {
+  background: radial-gradient(circle at 30% 30%, #f0a8d6 0%, #c447a0 55%, #6b2b6b 100%);
+}
+body.page-id-129 .sec-team .avatar.hue-260 {
+  background: radial-gradient(circle at 30% 30%, #b3a3f0 0%, #6f4bff 55%, #3a2080 100%);
+}
+body.page-id-129 .sec-team .team-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  text-transform: lowercase;
+  margin: 0 !important;
+  color: var(--b-ink) !important;
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-name {
+  color: var(--b-bg) !important;
+}
+body.page-id-129 .sec-team .team-role {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+  margin-top: 6px;
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-role { color: rgba(255, 255, 255, .6); }
+body.page-id-129 .sec-team .team-bio {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--b-ink-2);
+  margin: 0;
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-bio { color: rgba(255, 255, 255, .85); }
+body.page-id-129 .sec-team .team-stats {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(10, 10, 10, .13);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-stats {
+  border-top: 1px solid rgba(255, 255, 255, .15);
+}
+body.page-id-129 .sec-team .team-stats .label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-stats .label { color: rgba(255, 255, 255, .5); }
+body.page-id-129 .sec-team .team-stats .val {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--b-violet);
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-stats .val { color: var(--b-acid); }
+body.page-id-129 .sec-team .team-stats .val.role {
+  color: var(--b-ink);
+  text-transform: lowercase;
+}
+body.page-id-129 .sec-team .team-card.is-claude .team-stats .val.role { color: var(--b-bg); }
+
+/* ---------- Section 09 — CTA final ---------- */
+body.page-id-129 .sec-cta {
+  background: var(--b-acid) !important;
+  color: var(--b-ink) !important;
+  padding: 120px 32px !important;
+  position: relative;
+  overflow: hidden;
+}
+body.page-id-129 .sec-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .08) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .08) 0 1px, transparent 1px 28px);
+  pointer-events: none;
+}
+body.page-id-129 .sec-cta .cta-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: end;
+}
+body.page-id-129 .sec-cta .cta-title {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 112px !important;
+  line-height: 0.85 !important;
+  letter-spacing: -0.045em !important;
+  text-transform: lowercase;
+  margin: 0 !important;
+}
+body.page-id-129 .sec-cta .cta-title .verdict { color: var(--b-violet); }
+body.page-id-129 .sec-cta .cta-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink);
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-cta .cta-body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  max-width: 420px;
+  margin: 0;
+}
+body.page-id-129 .sec-cta .cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+body.page-id-129 .sec-cta .cta-btn {
+  background: var(--b-ink);
+  color: var(--b-acid);
+  border: 2px solid var(--b-ink);
+  padding: 16px 22px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+body.page-id-129 .sec-cta .cta-btn.ghost {
+  background: var(--b-bg);
+  color: var(--b-ink);
+}
+
+/* ---------- Section 10 — footer (markup-level) ---------- */
+body.page-id-129 .sec-footer {
+  background: var(--b-ink) !important;
+  color: var(--b-bg) !important;
+  padding: 64px 32px 24px !important;
+}
+body.page-id-129 .sec-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 56px;
+}
+body.page-id-129 .sec-footer .footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.025em;
+}
+body.page-id-129 .sec-footer .footer-brand .sep { color: var(--b-violet); }
+body.page-id-129 .sec-footer .footer-brand .lab { color: var(--b-acid); }
+body.page-id-129 .sec-footer .footer-est {
+  margin-top: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+}
+body.page-id-129 .sec-footer .footer-pitch {
+  margin-top: 18px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, .7);
+  line-height: 1.55;
+  max-width: 280px;
+}
+body.page-id-129 .sec-footer .footer-social {
+  margin-top: 18px;
+  display: flex;
+  gap: 6px;
+}
+body.page-id-129 .sec-footer .footer-social span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid rgba(237, 236, 231, .2);
+}
+body.page-id-129 .sec-footer .footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-acid);
+  margin-bottom: 14px;
+}
+body.page-id-129 .sec-footer .footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body.page-id-129 .sec-footer .footer-col li {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, .7);
+}
+body.page-id-129 .sec-footer .footer-bottom {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Hide Astra page title only (header + footer Astra restaurés en natif) ---------- */
+body.page-id-129 .ast-archive-description,
+body.page-id-129 .entry-header,
+body.page-id-129 .entry-title { display: none !important; }
+/* Note S4-bis 2026-05-20 : header Astra (.ast-primary-header-bar) et footer Astra (#colophon etc.) NE SONT PLUS masqués
+   → cohérence visuelle entre les 5 pages + modifiable via Customizer Astra. */
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1280px) {
+  body.page-id-129 .sec-hero .hero-title { font-size: 84px !important; }
+  body.page-id-129 .sec-methods .methods-title { font-size: 72px !important; }
+  body.page-id-129 .sec-cta .cta-title { font-size: 92px !important; }
+  body.page-id-129 .sec-stats .stat-value { font-size: 72px; }
+}
+
+@media (max-width: 1024px) {
+  body.page-id-129 .sec-hero .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  body.page-id-129 .sec-hero .line-numbers { display: none; }
+  body.page-id-129 .sec-hero .hero-rail {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 48px;
+    border-top: 1px solid var(--b-ink);
+    padding-top: 32px;
+  }
+  body.page-id-129 .sec-hero .hero-title { font-size: 64px !important; }
+  body.page-id-129 .sec-why .why-grid { grid-template-columns: 1fr; gap: 48px; }
+  body.page-id-129 .sec-pillars .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  body.page-id-129 .sec-pillars .pillars-head { grid-template-columns: 1fr; gap: 24px; }
+  body.page-id-129 .sec-pillars .pillars-title { font-size: 48px !important; }
+  body.page-id-129 .sec-methods .methods-title { font-size: 56px !important; }
+  body.page-id-129 .sec-team .team-grid { grid-template-columns: 1fr; }
+  body.page-id-129 .sec-team .team-card { border-right: 0; border-bottom: 2px solid var(--b-ink); }
+  body.page-id-129 .sec-team .team-card:last-child { border-bottom: 0; }
+  body.page-id-129 .sec-team .team-title { font-size: 48px !important; }
+  body.page-id-129 .sec-cta .cta-grid { grid-template-columns: 1fr; gap: 32px; }
+  body.page-id-129 .sec-cta .cta-title { font-size: 72px !important; }
+  body.page-id-129 .sec-footer .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  body.page-id-129 .method-table .head-row,
+  body.page-id-129 .method-row {
+    grid-template-columns: 40px 1fr 1fr;
+    row-gap: 0;
+  }
+  body.page-id-129 .method-table .head-row > div:nth-child(n+3):nth-child(-n+6) { display: none; }
+  body.page-id-129 .method-row .mr-score:nth-of-type(n+1):nth-of-type(-n+3) { display: none; }
+  body.page-id-129 .sec-stats .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  body.page-id-129 .sec-stats .stat-cell { border-right: 1px solid rgba(255, 255, 255, .15); border-bottom: 1px solid rgba(255, 255, 255, .15); }
+}
+
+@media (max-width: 640px) {
+  body.page-id-129 .sec-utility,
+  body.page-id-129 .sec-localnav,
+  body.page-id-129 .sec-hero,
+  body.page-id-129 .sec-why,
+  body.page-id-129 .sec-pillars,
+  body.page-id-129 .sec-methods,
+  body.page-id-129 .sec-team,
+  body.page-id-129 .sec-cta,
+  body.page-id-129 .sec-footer { padding-left: 16px !important; padding-right: 16px !important; }
+  body.page-id-129 .sec-hero { padding-top: 24px !important; padding-bottom: 64px !important; }
+  body.page-id-129 .sec-hero .hero-title { font-size: 48px !important; line-height: 1.05 !important; }
+  body.page-id-129 .sec-hero .roadmap { grid-template-columns: 1fr 1fr; }
+  body.page-id-129 .sec-why { padding-top: 64px !important; padding-bottom: 64px !important; }
+  body.page-id-129 .sec-why .why-title { font-size: 40px !important; }
+  body.page-id-129 .sec-pillars { padding-top: 64px !important; padding-bottom: 64px !important; }
+  body.page-id-129 .sec-pillars .pillars-grid { grid-template-columns: 1fr; }
+  body.page-id-129 .sec-pillars .pillars-title { font-size: 40px !important; }
+  body.page-id-129 .sec-methods { padding-top: 64px !important; padding-bottom: 80px !important; }
+  body.page-id-129 .sec-methods .methods-title { font-size: 44px !important; }
+  body.page-id-129 .sec-team { padding-top: 64px !important; padding-bottom: 64px !important; }
+  body.page-id-129 .sec-team .team-title { font-size: 38px !important; }
+  body.page-id-129 .sec-cta { padding-top: 64px !important; padding-bottom: 64px !important; }
+  body.page-id-129 .sec-cta .cta-title { font-size: 52px !important; }
+  body.page-id-129 .sec-footer .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  body.page-id-129 .sec-utility .utility-row,
+  body.page-id-129 .sec-localnav .localnav-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  body.page-id-129 .sec-localnav .nav-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  body.page-id-129 .sec-stats .stats-grid { grid-template-columns: 1fr; }
+  body.page-id-129 .sec-stats .stat-cell { min-height: 140px; padding: 24px 20px; }
+  body.page-id-129 .sec-stats .stat-value { font-size: 64px; }
+}
+
+/* ============================================================================
+   S4 PATCHES — refonte 2026-05-20 (blocs Gutenberg natifs)
+   Ces règles compensent les wrappers générés par Gutenberg/Astra/Spectra
+   quand le markup est en blocs natifs (au lieu de wp:html brut).
+   ============================================================================ */
+
+/* P1 — Force display:grid sur les conteneurs grid (override is-layout-flow) */
+body.page-id-129 .hero-grid { display: grid !important; grid-template-columns: 60px 1fr 320px; gap: 0; }
+body.page-id-129 .roadmap { display: grid !important; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+body.page-id-129 .meta-list .row { display: grid !important; grid-template-columns: 100px 1fr; }
+body.page-id-129 .annot { display: grid !important; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+
+/* P2 — Force display:flex pour les sous-groupes flex (rc-head / rc-score / utility-row / nav-links / verdict-strip / hero-ctas) */
+body.page-id-129 .sec-utility .utility-row { display: flex !important; }
+body.page-id-129 .sec-utility .utility-row > .wp-block-group { display: flex !important; gap: 22px; flex-wrap: wrap; }
+body.page-id-129 .sec-localnav .localnav-row { display: flex !important; }
+body.page-id-129 .sec-localnav .nav-links { display: flex !important; }
+body.page-id-129 .sec-hero .roadmap-card .rc-head { display: flex !important; justify-content: space-between; align-items: center; }
+body.page-id-129 .sec-hero .roadmap-card .rc-score { display: flex !important; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+body.page-id-129 .sec-hero .verdict-strip { display: flex !important; gap: 6px; margin-bottom: 18px; }
+body.page-id-129 .sec-hero .hero-ctas { display: flex !important; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
+
+/* P3 — Reset Astra/Gutenberg parasites sur .wp-block-group (margins, padding) */
+body.page-id-129 .wp-block-group { background: transparent; }
+body.page-id-129 .wp-block-group > * { margin-top: 0; margin-bottom: 0; }
+body.page-id-129 .wp-block-paragraph { margin: 0; }
+
+/* P4 — wp:separator (rail-sep) : neutraliser styles natifs gris */
+body.page-id-129 .sec-hero .wp-block-separator.rail-sep {
+  border: 0 !important;
+  height: 1px;
+  background: var(--b-ink);
+  margin: 28px 0;
+  opacity: 1;
+  max-width: none;
+  width: 100%;
+}
+
+/* P5 — Boutons "wp:paragraph.btn" : neutraliser <p> default + assurer affichage inline-flex */
+body.page-id-129 .btn,
+body.page-id-129 .nav-cta,
+body.page-id-129 .rail-cta,
+body.page-id-129 .verdict-tag {
+  border-radius: 0 !important;
+}
+body.page-id-129 .sec-hero .hero-ctas .btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+body.page-id-129 .sec-hero .rail-cta {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* P6 — Anti is-layout-constrained sur les sous-groupes du hero (full-bleed children) */
+body.page-id-129 .sec-hero .wp-block-group > * {
+  max-width: none !important;
+}
+body.page-id-129 .sec-hero .hero-main {
+  position: relative;
+  padding: 0 24px 0 8px;
+}
+
+/* P7 — Étendre arrow-noemoji aux verdict-tag et rail-cta (rendu glyph noir vs emoji bleu) */
+body.page-id-129 .verdict-tag,
+body.page-id-129 .rail-cta {
+  font-variant-emoji: text;
+}
+
+/* P8 — Footer wp:list selectors (préparation LOT 3, ne casse rien en LOT 1) */
+body.page-id-129 .sec-footer .footer-col .wp-block-list,
+body.page-id-129 .sec-footer .footer-col ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* P9 — Lab placeholder (refonte sections 4-10) — masqué proprement pendant LOT 1 */
+body.page-id-129 .lab-placeholder {
+  display: block;
+}
+
+/* ==================== CADRAGE 1440PX (S4-sexies) ==================== */
+body.page-id-129 .ast-container,
+body.page-id-129 .ast-narrow-container,
+body.page-id-129 .site-content > .ast-container,
+body.page-id-129 .site-content,
+body.page-id-129 .entry-content,
+body.page-id-129 .ast-no-sidebar .entry-content {
+  max-width: 1440px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+body.page-id-129 .entry-content > .alignfull,
+body.page-id-129 .entry-content > .wp-block-group.alignfull,
+body.page-id-129 .entry-content > .wp-block-cover.alignfull,
+body.page-id-129 .entry-content > .wp-block-html .sec-method-banner,
+body.page-id-129 .entry-content .alignfull,
+body.page-id-129 .entry-content > .wp-block-html .hub-stats,
+body.page-id-129 .entry-content > .wp-block-html .hub-footer {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+/* end cadrage 1440 */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+.sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 18px;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #EDECE7 !important;
+  flex-wrap: wrap;
+  margin: 0 !important;
+}
+.sec-method-banner > p { margin: 0 !important; }
+.sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+.sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+}
+.sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+.sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+.sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+.sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+.sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+.sec-method-banner .banner-tag {
+  margin-left: auto;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+}
+
+/* ════════════════ MENU ASTRA — ITEM ACTIF EN SURBRILLANCE ════════════════ */
+.main-header-menu .current-menu-item > a,
+.main-header-menu .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_item > a,
+nav .current-menu-item > a,
+nav .current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 6px 14px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu .current-menu-item > a:hover,
+.main-header-menu .current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+/* ==================== S4-NONIES HIDE ASTRA FOOTER ==================== */
+body.page-id-129 #colophon,
+body.page-id-129 .site-footer,
+body.page-id-129 footer.site-footer,
+body.page-id-129 .ast-footer-overlay,
+body.page-id-129 .site-primary-footer-wrap,
+body.page-id-129 .site-below-footer-wrap,
+body.page-id-129 .site-above-footer-wrap { display: none !important; }
+/* end hide astra footer */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════ MENU ASTRA — UNIFORMITÉ + ITEM ACTIF EN SURBRILLANCE ════════════════ */
+/* Base : padding uniforme sur TOUS les items + border-bottom transparent
+   → pas de layout shift quand l'item courant ajoute son highlight acid. */
+.main-header-menu > li > a,
+.main-navigation > div > ul > li > a,
+ul.main-header-menu > li > a,
+nav.main-navigation > div > ul > li > a {
+  padding: 6px 14px !important;
+  border-bottom: 2px solid transparent !important;
+  transition: background .15s ease, color .15s ease, border-color .15s ease !important;
+}
+/* Item courant : background acid + texte ink + bordure ink */
+.main-header-menu .current-menu-item > a,
+.main-header-menu .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_item > a,
+nav .current-menu-item > a,
+nav .current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 6px 14px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu .current-menu-item > a:hover,
+.main-header-menu .current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LAB HEADER NORMALIZE — SOURCE UNIQUE, DÉFINITIVE
+   ════════════════════════════════════════════════════════════════════════════
+   Harmonise le rendu de l'en-tête Astra + du menu sur les 6 pages du Lab.
+
+   ⚠ NE TOUCHE PAS :
+   - aux items du menu WP (toujours éditables depuis Apparence → Menus)
+   - au logo / titre de site / slogan (toujours éditables depuis
+     Apparence → Personnaliser → Identité du site)
+   - à la configuration Header Builder d'Astra (toujours éditable depuis
+     Apparence → Personnaliser → Header Builder)
+
+   Ce bloc ne fait qu'harmoniser le RENDU CSS de ces éléments sur les 6 pages
+   du Lab. Si vous changez le menu ou le logo dans l'admin, le changement se
+   propage automatiquement.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Aucun espace blanc entre la barre de menu Astra et le contenu (banner) */
+body #primary,
+body .site-content > .ast-container,
+body .site-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body #primary { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* 2. Cache l'entry-header (titre de page Astra) sur les 6 pages — uniformité */
+body.page .entry-header,
+body.page .entry-title,
+body.page .ast-archive-description { display: none !important; }
+
+/* 3. MENU ASTRA — padding identique sur TOUS les items (pas seulement le courant)
+      → AUCUN décalage vertical quand le highlight acid s'applique.
+      Sélecteurs Astra Header Builder + variantes legacy. */
+.main-header-menu > li > a,
+.main-header-menu li.menu-item > a,
+nav.main-navigation ul.main-header-menu > li > a,
+nav.main-navigation li.menu-item > a,
+.ast-builder-menu-1 .main-header-menu > li > a,
+.ast-builder-menu-1 li.menu-item > a,
+header.site-header .main-header-menu > li > a {
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
+}
+
+/* 4. Hover (item non-courant) — texte violet, pas de fond */
+.main-header-menu > li > a:hover,
+.main-header-menu li.menu-item:not(.current-menu-item):not(.current_page_item) > a:hover {
+  color: #6F4BFF !important;
+  background: transparent !important;
+}
+
+/* 5. Item courant — background acid + texte ink + bordure ink
+      MÊME padding que les autres items → aucun décalage. */
+.main-header-menu li.current-menu-item > a,
+.main-header-menu li.current_page_item > a,
+nav.main-navigation li.current-menu-item > a,
+nav.main-navigation li.current_page_item > a,
+.ast-builder-menu-1 li.current-menu-item > a,
+.ast-builder-menu-1 li.current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu li.current-menu-item > a:hover,
+.main-header-menu li.current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  border-bottom-color: #6F4BFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LAB HEADER NORMALIZE — SOURCE UNIQUE, DÉFINITIVE
+   ════════════════════════════════════════════════════════════════════════════
+   Harmonise le rendu de l'en-tête Astra + du menu sur les 6 pages du Lab.
+
+   ⚠ NE TOUCHE PAS :
+   - aux items du menu WP (toujours éditables depuis Apparence → Menus)
+   - au logo / titre de site / slogan (toujours éditables depuis
+     Apparence → Personnaliser → Identité du site)
+   - à la configuration Header Builder d'Astra (toujours éditable depuis
+     Apparence → Personnaliser → Header Builder)
+
+   Ce bloc ne fait qu'harmoniser le RENDU CSS de ces éléments sur les 6 pages
+   du Lab. Si vous changez le menu ou le logo dans l'admin, le changement se
+   propage automatiquement.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Aucun espace blanc entre la barre de menu Astra et le contenu (banner) */
+body #primary,
+body .site-content > .ast-container,
+body .site-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body #primary { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* 1b. Le HEADER Astra (.site-header / .ast-primary-header-bar) garde sa largeur native
+       MÊME si une rule page-specific contraint .ast-container à 1440px pour le cadrage.
+       → Évite que le menu wrappe verticalement quand le header est compressé. */
+header.site-header .ast-container,
+.ast-primary-header-bar .ast-container,
+.ast-builder-grid-row-container .ast-container,
+#masthead .ast-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 1c. Le menu reste en ligne (jamais wrap) */
+ul.main-header-menu,
+nav.main-navigation ul.main-header-menu,
+.ast-builder-menu-1 ul.main-header-menu {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+ul.main-header-menu > li,
+nav.main-navigation li.menu-item {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Cache l'entry-header (titre de page Astra) sur les 6 pages — uniformité */
+body.page .entry-header,
+body.page .entry-title,
+body.page .ast-archive-description { display: none !important; }
+
+/* 3. MENU ASTRA — padding identique sur TOUS les items (pas seulement le courant)
+      → AUCUN décalage vertical quand le highlight acid s'applique.
+      Sélecteurs Astra Header Builder + variantes legacy. */
+.main-header-menu > li > a,
+.main-header-menu li.menu-item > a,
+nav.main-navigation ul.main-header-menu > li > a,
+nav.main-navigation li.menu-item > a,
+.ast-builder-menu-1 .main-header-menu > li > a,
+.ast-builder-menu-1 li.menu-item > a,
+header.site-header .main-header-menu > li > a {
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
+}
+
+/* 4. Hover (item non-courant) — texte violet, pas de fond */
+.main-header-menu > li > a:hover,
+.main-header-menu li.menu-item:not(.current-menu-item):not(.current_page_item) > a:hover {
+  color: #6F4BFF !important;
+  background: transparent !important;
+}
+
+/* 5. Item courant — background acid + texte ink + bordure ink
+      MÊME padding que les autres items → aucun décalage. */
+.main-header-menu li.current-menu-item > a,
+.main-header-menu li.current_page_item > a,
+nav.main-navigation li.current-menu-item > a,
+nav.main-navigation li.current_page_item > a,
+.ast-builder-menu-1 li.current-menu-item > a,
+.ast-builder-menu-1 li.current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu li.current-menu-item > a:hover,
+.main-header-menu li.current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  border-bottom-color: #6F4BFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LAB HEADER NORMALIZE — SOURCE UNIQUE, DÉFINITIVE
+   ════════════════════════════════════════════════════════════════════════════
+   Harmonise le rendu de l'en-tête Astra + du menu sur les 6 pages du Lab.
+
+   ⚠ NE TOUCHE PAS :
+   - aux items du menu WP (toujours éditables depuis Apparence → Menus)
+   - au logo / titre de site / slogan (toujours éditables depuis
+     Apparence → Personnaliser → Identité du site)
+   - à la configuration Header Builder d'Astra (toujours éditable depuis
+     Apparence → Personnaliser → Header Builder)
+
+   Ce bloc ne fait qu'harmoniser le RENDU CSS de ces éléments sur les 6 pages
+   du Lab. Si vous changez le menu ou le logo dans l'admin, le changement se
+   propage automatiquement.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Aucun espace blanc entre la barre de menu Astra et le contenu (banner) */
+body #primary,
+body .site-content > .ast-container,
+body .site-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body #primary { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* 1b. Le HEADER Astra (.site-header / .ast-primary-header-bar) garde sa largeur native
+       MÊME si une rule page-specific contraint .ast-container à 1440px pour le cadrage.
+       → Évite que le menu wrappe verticalement quand le header est compressé. */
+header.site-header .ast-container,
+.ast-primary-header-bar .ast-container,
+.ast-builder-grid-row-container .ast-container,
+#masthead .ast-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 1c. Menu CENTRÉ dans le header (suggestion Fabrice S4-decies-bis)
+       → minimise le décalage visuel entre HUB pleine largeur et M1-M5 cadré 1440. */
+ul.main-header-menu,
+nav.main-navigation ul.main-header-menu,
+.ast-builder-menu-1 ul.main-header-menu,
+.ast-flex.ast-justify-content-flex-end.main-header-menu,
+.ast-flex.main-header-menu {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  list-style: none !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+/* Force aussi le wrapper de nav (Astra ajoute parfois un wrapper en flex justify-end) */
+nav.main-navigation,
+.ast-builder-menu-1,
+.ast-builder-menu-1-inner,
+.site-header-section,
+.ast-flex.site-header-primary-section-right {
+  justify-content: center !important;
+}
+ul.main-header-menu > li,
+nav.main-navigation li.menu-item {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Cache l'entry-header (titre de page Astra) sur les 6 pages — uniformité */
+body.page .entry-header,
+body.page .entry-title,
+body.page .ast-archive-description { display: none !important; }
+
+/* 3. MENU ASTRA — padding identique sur TOUS les items (pas seulement le courant)
+      → AUCUN décalage vertical quand le highlight acid s'applique.
+      Sélecteurs Astra Header Builder + variantes legacy. */
+.main-header-menu > li > a,
+.main-header-menu li.menu-item > a,
+nav.main-navigation ul.main-header-menu > li > a,
+nav.main-navigation li.menu-item > a,
+.ast-builder-menu-1 .main-header-menu > li > a,
+.ast-builder-menu-1 li.menu-item > a,
+header.site-header .main-header-menu > li > a {
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
+}
+
+/* 4. Hover (item non-courant) — texte violet, pas de fond */
+.main-header-menu > li > a:hover,
+.main-header-menu li.menu-item:not(.current-menu-item):not(.current_page_item) > a:hover {
+  color: #6F4BFF !important;
+  background: transparent !important;
+}
+
+/* 5. Item courant — background acid + texte ink + bordure ink
+      MÊME padding que les autres items → aucun décalage. */
+.main-header-menu li.current-menu-item > a,
+.main-header-menu li.current_page_item > a,
+nav.main-navigation li.current-menu-item > a,
+nav.main-navigation li.current_page_item > a,
+.ast-builder-menu-1 li.current-menu-item > a,
+.ast-builder-menu-1 li.current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu li.current-menu-item > a:hover,
+.main-header-menu li.current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  border-bottom-color: #6F4BFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+/* ==================== S4-OCTIES SHARED (footer + menu + banner) ==================== */
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LAB HEADER NORMALIZE — SOURCE UNIQUE, DÉFINITIVE
+   ════════════════════════════════════════════════════════════════════════════
+   Harmonise le rendu de l'en-tête Astra + du menu sur les 6 pages du Lab.
+
+   ⚠ NE TOUCHE PAS :
+   - aux items du menu WP (toujours éditables depuis Apparence → Menus)
+   - au logo / titre de site / slogan (toujours éditables depuis
+     Apparence → Personnaliser → Identité du site)
+   - à la configuration Header Builder d'Astra (toujours éditable depuis
+     Apparence → Personnaliser → Header Builder)
+
+   Ce bloc ne fait qu'harmoniser le RENDU CSS de ces éléments sur les 6 pages
+   du Lab. Si vous changez le menu ou le logo dans l'admin, le changement se
+   propage automatiquement.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Aucun espace blanc entre la barre de menu Astra et le contenu (banner) */
+body #primary,
+body .site-content > .ast-container,
+body .site-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body #primary { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* 1b. Le HEADER Astra (.site-header / .ast-primary-header-bar) garde sa largeur native
+       MÊME si une rule page-specific contraint .ast-container à 1440px pour le cadrage.
+       → Évite que le menu wrappe verticalement quand le header est compressé. */
+header.site-header .ast-container,
+.ast-primary-header-bar .ast-container,
+.ast-builder-grid-row-container .ast-container,
+#masthead .ast-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 1c. Menu CENTRÉ dans le viewport, indépendamment de la section Astra qui l'héberge
+       (suggestion Fabrice S4-decies-bis).
+
+       Problème résolu : Astra Header Builder place le menu dans une "section" (left/center/right)
+       du grid-row. La section "right" n'occupe que la moitié droite, donc même
+       avec justify-content:center le menu n'est centré que dans cette demi-largeur.
+
+       Solution : position absolute centrée sur le grid-row complet. Le grid-row
+       devient le contexte de positionnement (relative). Logo + slogan restent dans
+       leur(s) row(s) séparée(s) Astra (header_builder typique = 2 rows superposées
+       : Above / Primary), donc pas d'overlap. */
+.ast-primary-header-bar .ast-builder-grid-row,
+.ast-primary-header-bar > .ast-builder-grid-row-container > .ast-builder-grid-row,
+header.site-header .ast-primary-header-bar .ast-builder-grid-row {
+  position: relative !important;
+  min-height: 56px !important;
+}
+.ast-primary-header-bar nav.main-navigation,
+.ast-primary-header-bar .site-header-section-right nav.main-navigation,
+.ast-primary-header-bar .ast-builder-menu-1 {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: max-content !important;
+  max-width: 96vw !important;
+}
+/* Les sections vides (left/center) ne doivent pas occuper d'espace inutile.
+   Mais on les laisse en place pour que Customizer continue de fonctionner. */
+.ast-primary-header-bar .site-header-section-left:empty,
+.ast-primary-header-bar .site-header-section-center:empty,
+.ast-primary-header-bar .ast-builder-grid-row-section-left:empty,
+.ast-primary-header-bar .ast-builder-grid-row-section-center:empty {
+  display: none !important;
+}
+
+ul.main-header-menu,
+nav.main-navigation ul.main-header-menu,
+.ast-builder-menu-1 ul.main-header-menu,
+.ast-flex.ast-justify-content-flex-end.main-header-menu,
+.ast-flex.main-header-menu {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+ul.main-header-menu > li,
+nav.main-navigation li.menu-item {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Cache l'entry-header (titre de page Astra) sur les 6 pages — uniformité */
+body.page .entry-header,
+body.page .entry-title,
+body.page .ast-archive-description { display: none !important; }
+
+/* 3. MENU ASTRA — padding identique sur TOUS les items (pas seulement le courant)
+      → AUCUN décalage vertical quand le highlight acid s'applique.
+      Sélecteurs Astra Header Builder + variantes legacy. */
+.main-header-menu > li > a,
+.main-header-menu li.menu-item > a,
+nav.main-navigation ul.main-header-menu > li > a,
+nav.main-navigation li.menu-item > a,
+.ast-builder-menu-1 .main-header-menu > li > a,
+.ast-builder-menu-1 li.menu-item > a,
+header.site-header .main-header-menu > li > a {
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
+}
+
+/* 4. Hover (item non-courant) — texte violet, pas de fond */
+.main-header-menu > li > a:hover,
+.main-header-menu li.menu-item:not(.current-menu-item):not(.current_page_item) > a:hover {
+  color: #6F4BFF !important;
+  background: transparent !important;
+}
+
+/* 5. Item courant — background acid + texte ink + bordure ink
+      MÊME padding que les autres items → aucun décalage. */
+.main-header-menu li.current-menu-item > a,
+.main-header-menu li.current_page_item > a,
+nav.main-navigation li.current-menu-item > a,
+nav.main-navigation li.current_page_item > a,
+.ast-builder-menu-1 li.current-menu-item > a,
+.ast-builder-menu-1 li.current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu li.current-menu-item > a:hover,
+.main-header-menu li.current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  border-bottom-color: #6F4BFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
+

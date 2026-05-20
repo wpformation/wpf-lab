@@ -1,0 +1,362 @@
+/* ============================================================================
+   WPF-AI-LAB · CSS PARTAGÉ S4-octies — Footer Lab + Menu Astra actif + Banner renforcé
+   À concaténer dans le CSS meta de chaque page (M1-M5 + HUB).
+   Scope minimal : sélecteurs préfixés .lab-footer + sélecteurs Astra globaux.
+   ============================================================================ */
+
+/* ════════════════ BANNER RENFORCÉ ════════════════ */
+/* Sélecteurs préfixés `body` (specificity 0,1,1 !important) pour battre tout bloc
+   page-scoped non-!important (ex. ancien bloc HUB body.page-id-225 .sec-method-banner). */
+body .sec-method-banner {
+  background: #0A0A0A !important;
+  border-top: 2px solid #0A0A0A !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  padding: 22px 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #EDECE7 !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+}
+body .sec-method-banner > p { margin: 0 !important; }
+body .sec-method-banner .banner-prefix { color: rgba(237,236,231,.6) !important; }
+body .sec-method-banner .banner-num {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 13px !important;
+}
+body .sec-method-banner.is-featured { background: #D7FF3A !important; color: #0A0A0A !important; }
+body .sec-method-banner.is-featured .banner-prefix { color: rgba(10,10,10,.6) !important; }
+body .sec-method-banner.is-featured .banner-num { background: #0A0A0A !important; color: #D7FF3A !important; }
+body .sec-method-banner .banner-name {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: #EDECE7 !important;
+}
+body .sec-method-banner.is-featured .banner-name { color: #0A0A0A !important; }
+body .sec-method-banner .banner-tag {
+  margin-left: auto !important;
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  padding: 7px 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  font-size: 12px !important;
+}
+body .sec-method-banner .banner-sep { color: rgba(237,236,231,.4) !important; margin: 0 2px !important; }
+body .sec-method-banner.is-featured .banner-sep { color: rgba(10,10,10,.4) !important; }
+body .sec-method-banner.is-featured .banner-tag { background: #0A0A0A !important; color: #D7FF3A !important; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LAB HEADER NORMALIZE — SOURCE UNIQUE, DÉFINITIVE
+   ════════════════════════════════════════════════════════════════════════════
+   Harmonise le rendu de l'en-tête Astra + du menu sur les 6 pages du Lab.
+
+   ⚠ NE TOUCHE PAS :
+   - aux items du menu WP (toujours éditables depuis Apparence → Menus)
+   - au logo / titre de site / slogan (toujours éditables depuis
+     Apparence → Personnaliser → Identité du site)
+   - à la configuration Header Builder d'Astra (toujours éditable depuis
+     Apparence → Personnaliser → Header Builder)
+
+   Ce bloc ne fait qu'harmoniser le RENDU CSS de ces éléments sur les 6 pages
+   du Lab. Si vous changez le menu ou le logo dans l'admin, le changement se
+   propage automatiquement.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Aucun espace blanc entre la barre de menu Astra et le contenu (banner) */
+body #primary,
+body .site-content > .ast-container,
+body .site-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body #primary { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+/* 1b. Le HEADER Astra (.site-header / .ast-primary-header-bar) garde sa largeur native
+       MÊME si une rule page-specific contraint .ast-container à 1440px pour le cadrage.
+       → Évite que le menu wrappe verticalement quand le header est compressé. */
+header.site-header .ast-container,
+.ast-primary-header-bar .ast-container,
+.ast-builder-grid-row-container .ast-container,
+#masthead .ast-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 1c. Menu CENTRÉ dans le viewport, indépendamment de la section Astra qui l'héberge
+       (suggestion Fabrice S4-decies-bis).
+
+       Problème résolu : Astra Header Builder place le menu dans une "section" (left/center/right)
+       du grid-row. La section "right" n'occupe que la moitié droite, donc même
+       avec justify-content:center le menu n'est centré que dans cette demi-largeur.
+
+       Solution : position absolute centrée sur le grid-row complet. Le grid-row
+       devient le contexte de positionnement (relative). Logo + slogan restent dans
+       leur(s) row(s) séparée(s) Astra (header_builder typique = 2 rows superposées
+       : Above / Primary), donc pas d'overlap. */
+.ast-primary-header-bar .ast-builder-grid-row,
+.ast-primary-header-bar > .ast-builder-grid-row-container > .ast-builder-grid-row,
+header.site-header .ast-primary-header-bar .ast-builder-grid-row {
+  position: relative !important;
+  min-height: 56px !important;
+}
+.ast-primary-header-bar nav.main-navigation,
+.ast-primary-header-bar .site-header-section-right nav.main-navigation,
+.ast-primary-header-bar .ast-builder-menu-1 {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: max-content !important;
+  max-width: 96vw !important;
+}
+/* Les sections vides (left/center) ne doivent pas occuper d'espace inutile.
+   Mais on les laisse en place pour que Customizer continue de fonctionner. */
+.ast-primary-header-bar .site-header-section-left:empty,
+.ast-primary-header-bar .site-header-section-center:empty,
+.ast-primary-header-bar .ast-builder-grid-row-section-left:empty,
+.ast-primary-header-bar .ast-builder-grid-row-section-center:empty {
+  display: none !important;
+}
+
+ul.main-header-menu,
+nav.main-navigation ul.main-header-menu,
+.ast-builder-menu-1 ul.main-header-menu,
+.ast-flex.ast-justify-content-flex-end.main-header-menu,
+.ast-flex.main-header-menu {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+ul.main-header-menu > li,
+nav.main-navigation li.menu-item {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Cache l'entry-header (titre de page Astra) sur les 6 pages — uniformité */
+body.page .entry-header,
+body.page .entry-title,
+body.page .ast-archive-description { display: none !important; }
+
+/* 3. MENU ASTRA — padding identique sur TOUS les items (pas seulement le courant)
+      → AUCUN décalage vertical quand le highlight acid s'applique.
+      Sélecteurs Astra Header Builder + variantes legacy. */
+.main-header-menu > li > a,
+.main-header-menu li.menu-item > a,
+nav.main-navigation ul.main-header-menu > li > a,
+nav.main-navigation li.menu-item > a,
+.ast-builder-menu-1 .main-header-menu > li > a,
+.ast-builder-menu-1 li.menu-item > a,
+header.site-header .main-header-menu > li > a {
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  color: #0A0A0A !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, border-color .2s ease !important;
+}
+
+/* 4. Hover (item non-courant) — texte violet, pas de fond */
+.main-header-menu > li > a:hover,
+.main-header-menu li.menu-item:not(.current-menu-item):not(.current_page_item) > a:hover {
+  color: #6F4BFF !important;
+  background: transparent !important;
+}
+
+/* 5. Item courant — background acid + texte ink + bordure ink
+      MÊME padding que les autres items → aucun décalage. */
+.main-header-menu li.current-menu-item > a,
+.main-header-menu li.current_page_item > a,
+nav.main-navigation li.current-menu-item > a,
+nav.main-navigation li.current_page_item > a,
+.ast-builder-menu-1 li.current-menu-item > a,
+.ast-builder-menu-1 li.current_page_item > a,
+ul.main-header-menu li.current-menu-item > a,
+ul.main-header-menu li.current_page_item > a {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid #0A0A0A !important;
+  text-decoration: none !important;
+}
+.main-header-menu li.current-menu-item > a:hover,
+.main-header-menu li.current_page_item > a:hover {
+  background: #6F4BFF !important;
+  color: #FFFFFF !important;
+  border-bottom-color: #6F4BFF !important;
+}
+
+/* ════════════════ FOOTER LAB UNIFIÉ ════════════════ */
+.lab-footer {
+  background: #0A0A0A;
+  color: rgba(255,255,255,.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #0A0A0A;
+}
+.lab-footer * { box-sizing: border-box; }
+.lab-footer-inner {
+  padding: 64px 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.lab-footer.is-fullbleed .lab-footer-inner {
+  max-width: none;
+  padding: 80px 64px 40px;
+}
+.lab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.lab-footer-col p,
+.lab-footer-col ul { margin: 0; }
+.lab-footer-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDECE7;
+  margin: 0 0 14px;
+}
+.lab-footer-brand .sep,
+.lab-footer-brand .lab { color: #D7FF3A; }
+.lab-footer-brand .lab { font-style: italic; }
+.lab-footer-est {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 16px;
+}
+.lab-footer-pitch {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin: 0 0 20px;
+  max-width: 360px;
+}
+.lab-footer-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lab-footer-social span {
+  background: rgba(255,255,255,.08);
+  padding: 6px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: #D7FF3A;
+}
+.lab-footer-col-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D7FF3A;
+  margin: 0 0 18px;
+}
+.lab-footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.lab-footer-col ul li {
+  margin-bottom: 10px;
+}
+.lab-footer-col ul li a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .15s ease;
+}
+.lab-footer-col ul li a:hover { color: #D7FF3A; }
+.lab-footer-col ul li.is-current a {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  font-weight: 700;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.lab-footer-col ul li.is-current a:hover { background: #6F4BFF; color: #FFFFFF; }
+
+/* Bandeau bas : copyright + page courante + EOF */
+.lab-footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,.55);
+  align-items: center;
+}
+.lab-footer-bottom p { margin: 0; }
+.lab-footer-current {
+  text-align: center;
+  background: rgba(215,255,58,.08);
+  border: 1px solid rgba(215,255,58,.25);
+  padding: 8px 16px;
+  color: #D7FF3A;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.lab-footer-current .num {
+  background: #D7FF3A;
+  color: #0A0A0A;
+  padding: 2px 7px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+.lab-footer-eof {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .lab-footer-inner { padding: 48px 24px 24px; }
+  .lab-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lab-footer-bottom { grid-template-columns: 1fr; text-align: center; }
+  .lab-footer-current { text-align: center; }
+  .lab-footer-eof { text-align: center; }
+}
+@media (max-width: 560px) {
+  .lab-footer-grid { grid-template-columns: 1fr; }
+}
+/* end footer-lab-shared */
