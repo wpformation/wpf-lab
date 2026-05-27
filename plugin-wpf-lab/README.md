@@ -274,7 +274,7 @@ Le plugin est conçu pour servir de **squelette de design system**. Ajouter un b
 - **Co-développement** : Claude Code (Anthropic, modèle Opus 4.7)
 - **Pattern PHP-only block registration (`autoRegister`)** : Miguel Fonseca (dev note officielle [du 3 mars 2026](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/)), implémentation par [@priethor](https://profiles.wordpress.org/priethor/), ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639). Disponible depuis WordPress 7.0.
 - **Inspiration design Direction B** : tradition brutalist-éditoriale (Werkplaats Typografie, mschf, etc.)
-- **Signalement de l'hallucination `autoGenerateControl`** (corrigée en v1.4.0) : [Matthieu Guirlinger](https://www.linkedin.com/in/matthieu-guirlinger/) (Tech Lead unflux), commentaire LinkedIn du 2026-05-27.
+- **Signalement de l'hallucination `autoGenerateControl`** (corrigée en v1.4.0) : signalement public en commentaire LinkedIn du 2026-05-27.
 
 ---
 

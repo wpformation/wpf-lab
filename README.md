@@ -13,9 +13,11 @@ Ce repo a démarré en **mai 2026, session S4**, avec 5 méthodes testées et **
 En **session S6 (21 mai 2026)**, deux nouvelles méthodes ont été ajoutées :
 
 - **M·06** — Gutenberg pur + CSS embarqué dans un seul bloc `core/html` (zéro plugin)
-- **M·07** — Blocs PHP custom via plugin `wpf-lab` et pattern `autoGenerateControl` WP 7.0 (zéro JS, zéro build)
+- **M·07** — Blocs PHP custom via plugin `wpf-lab` et pattern **PHP-only block registration** WordPress 7.0 (`supports.autoRegister: true`, zéro JS, zéro build)
 
 **Le vainqueur a changé** : **M·07 — 30/30 brut, 37,5/37,5 pondéré**. M·02 reste cité comme **la voie historique** (importante pour les sites legacy), mais surpassée pour toute refonte 2026.
+
+> **Note de transparence (2026-05-27)** : la version initiale de ce repo et de l'article WPFormation nommait ce pattern `autoGenerateControl` et le présentait comme un flag à poser sur chaque attribut. **Faux.** Le vrai mécanisme est `supports.autoRegister: true` au niveau du bloc (l'éditeur Gutenberg dérive automatiquement les contrôles sidebar du `type` de chaque attribut). Le plugin a toujours tourné correctement parce que `autoRegister` était déjà posé en parallèle ; WordPress ignorait silencieusement la clé inconnue. Corrigé en v1.4.0. Source officielle : [PHP-only block registration](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/) (dev note Miguel Fonseca, 3 mars 2026, ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639), implémentation [@priethor](https://profiles.wordpress.org/priethor/)).
 
 ---
 
@@ -23,7 +25,7 @@ En **session S6 (21 mai 2026)**, deux nouvelles méthodes ont été ajoutées :
 
 | # | Méthode | Score | Démo live |
 |---|---|---|---|
-| **★1** | **M·07 — Blocs PHP custom (autoGenerateControl)** | **30/30** | <https://test.wpformation.com/methode-blocs-php-custom/> |
+| **★1** | **M·07 — Blocs PHP custom (`supports.autoRegister` WP 7.0)** | **30/30** | <https://test.wpformation.com/methode-blocs-php-custom/> |
 | 2 | M·06 — Gutenberg pur + CSS dans core/html | 26/30 | <https://test.wpformation.com/methode-gutenberg-pur/> |
 | 3 | M·02 — Gutenberg + CSS perso (voie historique) | 24/30 | <https://test.wpformation.com/methode-wpformation/> |
 | 4 | M·01 — Gutenberg natif (baseline) | 25/30 | <https://test.wpformation.com/accueil-gutenberg-natif/> |
@@ -52,7 +54,7 @@ HUB : <https://test.wpformation.com/>
 
 ## Le plugin wpf-lab en bref
 
-11 blocs Gutenberg PHP custom, **zéro JavaScript**, grâce à WordPress 7.0 + pattern `autoGenerateControl`. Doc complète : [plugin-wpf-lab/README.md](plugin-wpf-lab/README.md).
+11 blocs Gutenberg PHP custom, **zéro JavaScript**, grâce à WordPress 7.0 + pattern **PHP-only block registration** (`supports.autoRegister: true`). Doc complète : [plugin-wpf-lab/README.md](plugin-wpf-lab/README.md).
 
 **Usage minimal** :
 
@@ -76,7 +78,7 @@ HUB : <https://test.wpformation.com/>
 
 ## Stack technique
 
-- **WordPress** 7.0+ (pour `autoGenerateControl`)
+- **WordPress** 7.0+ (pour `supports.autoRegister` — PHP-only block registration)
 - **Thème** Astra (free)
 - **Plugin Spectra** (free) — requis pour M·02 et M·04 (CSS page-level via meta)
 - **Plugin Spectra Pro** — requis pour M·05
@@ -100,6 +102,7 @@ HUB : <https://test.wpformation.com/>
 - **Matrice de scoring 7 méthodes** : [docs-s6/matrice-finale-7-methodes-2026-05-21-S6.md](docs-s6/matrice-finale-7-methodes-2026-05-21-S6.md)
 - **Note pour le rédacteur** : [docs-s6/note-pour-redacteur-wpformation-S6-FINALE.md](docs-s6/note-pour-redacteur-wpformation-S6-FINALE.md)
 - **Recap session S6** : [docs-s6/session-6-recap-2026-05-21.md](docs-s6/session-6-recap-2026-05-21.md)
+- **Source officielle WordPress 7.0** : [dev note PHP-only block registration](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/) (Miguel Fonseca, 3 mars 2026, ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639))
 
 ---
 
@@ -107,4 +110,4 @@ HUB : <https://test.wpformation.com/>
 
 - **Conception, benchmark, design Direction B** : Fabrice Ducarme — [WPFormation](https://wpformation.com)
 - **Co-développement** : Claude Code (Anthropic Opus 4.7)
-- **Pattern `autoGenerateControl`** : équipe Core AI WordPress (livré en WP 7.0, janvier 2026)
+- **Pattern PHP-only block registration (`autoRegister`)** : [Miguel Fonseca](https://profiles.wordpress.org/mfonseca/), dev note officielle [du 3 mars 2026](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/), implémentation par [@priethor](https://profiles.wordpress.org/priethor/), ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639). Disponible depuis WordPress 7.0.
