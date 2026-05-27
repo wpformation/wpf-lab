@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPF Lab — Blocs Direction B
  * Description:       11 blocs PHP custom (utility / localnav / banner / hero / stats / why / pillars / feature / methods-table / team / cta-final) pour la méthode M7-A du WPF-AI-LAB. Design Direction B Lab — palette bone + ink + acid + violet, Space Grotesk + JetBrains Mono. Zéro JavaScript, zéro build. UI sidebar Gutenberg auto-générée via le pattern WP 7.0 « PHP-only block registration » (`supports.autoRegister: true`, dev note Miguel Fonseca du 3 mars 2026, ticket Trac #64639).
- * Version:           1.4.0
+ * Version:           1.4.1
  * Requires at least: 7.0
  * Requires PHP:      7.4
  * Author:            Fabrice Ducarme (généré via Claude Code)
@@ -54,7 +54,7 @@ add_action( 'init', function () {
         'wpf-lab-blocks-style',
         plugins_url( 'style.css', __FILE__ ),
         array(),
-        '1.4.0'
+        '1.4.1'
     );
 } );
 
